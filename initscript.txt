@@ -1,0 +1,15 @@
+//Customer
+rails g model customer name:string
+
+//Contract
+rails g model contract name:string start_date:date end_date:date customer_id
+
+//RentPhase
+rails g model rent_phase name:string start_date:date end_date:date cycle:integer 'monthly_price:decimal{10,2}’ contract_id
+
+//Invoice
+rails g model invoice title:string start_date:date end_date:date due_date:date ’total:decimal{10,2}'    customer_id
+
+//LineItem
+rails g model lineitme start_date:date end_date:date unit:string 'total:decimal{10,2}'  'unit_price:decimal{10,2}' invoice_id
+

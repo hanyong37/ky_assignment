@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_date: 2016-08-25
+  end_date: 2016-08-25
+  cycle: 1
+  ‘monthly_price: 
+  ‘monthly_price: 
+  contract_id: MyString
+
+two:
+  name: MyString
+  start_date: 2016-08-25
+  end_date: 2016-08-25
+  cycle: 1
+  ‘monthly_price: 
+  ‘monthly_price: 
+  contract_id: MyString
