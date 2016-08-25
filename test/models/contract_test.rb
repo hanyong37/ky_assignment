@@ -15,8 +15,8 @@ class ContractTest < ActiveSupport::TestCase
     phase_2 = RentPhase.new do |p|
       p.name = '正式入住'
       p.start_date = '2016-09-26'
-      p.end_date = '2017-09-24'
-      p.cycle = 2
+      p.end_date = '2017-01-24'
+      p.cycle = 3
       p.monthly_price = 1200
     end
 
@@ -24,12 +24,12 @@ class ContractTest < ActiveSupport::TestCase
       p.name = '常住奖励'
       p.start_date = '2015-09-25'
       p.end_date = '2018-09-24'
-      p.cycle = 3
+      p.cycle = 4
       p.monthly_price = 1100
     end
 
 
-    phase_list = [phase_1, phase_2, phase_3]
+    phase_list = [phase_1, phase_2]
     #请修改以上数据以验证测试结果
 
     #1.测试generateContract
@@ -39,14 +39,20 @@ class ContractTest < ActiveSupport::TestCase
     assert contract.rent_phases.count == phase_list.count , "付款周期没有被正确保存保存"
 
     puts "==============================1.TEST Contract.generateContract=========================="
-    puts "==> Contract:[#{contract.name}] Start_date:[#{contract.start_date}] end_date:[#{contract.end_date}]"
+    puts "==> Contract:[#{contract.name}] Start_date:[#{contract.start_date}] end_date:[#{contract.end_date}]\n"
     contract.rent_phases.each do |p|
       puts "  ==>Phase:[#{p.name}] \n\t\tstart_date:[#{p.start_date}] \n\t\tend_date:[#{p.end_date}] \n\t\tmonthly price:[#{p.monthly_price}] \n\t\tCycle:[#{p.cycle}]"
     end
-    puts "(please modify /test/model/contract_test,line36 for different rent phase data)"
 
     #2. 测试generateInvoices
     puts "\n==============================2.TEST generateInvoices===================================="
+    puts "Mainflow: "
+    puts "  1. Phases information showed above, was used to generate a Contract;"
+    puts "  2. Then contract.generateInvoices() was called;"
+    puts "  3. The method will calculate Invoices and Linitems, and store them in the Database;"
+    puts "  4. I fetch the contract by name, and list all Phases/Invoices/Lineitems onto screen."
+    puts "  5. you can modify data to check for different scenariaes, \n\t\t\t(in /test/model/contract_test)"
+
     assert_not_nil contract.generateInvoices
 
     new_c = Contract.find_by_name('A Testing Contract')

@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a homework for my interview.
 
-Things you may want to cover:
+I used rails 5.0 + ruby-2.3.1 for my enviroment, but it doesn't mean they are hard dependencies;
 
-* Ruby version
+to run several command line to see the test result:
 
-* System dependencies
+%bundle install
+%rails db:migrate  (or rake if you are using rails 4.x)
+%rails test   (normally you can see the testing result printing on your terminal)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+--That's it!
