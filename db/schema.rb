@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825150301) do
+ActiveRecord::Schema.define(version: 20160825135113) do
 
   create_table "contracts", force: :cascade do |t|
     t.string   "name"
@@ -21,21 +21,16 @@ ActiveRecord::Schema.define(version: 20160825150301) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "invoices", force: :cascade do |t|
     t.string   "title"
     t.date     "start_date"
     t.date     "end_date"
     t.date     "due_date"
-    t.decimal  "total",         precision: 10, scale: 2
-    t.string   "rent_phase_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.decimal  "total",       precision: 10, scale: 2
+    t.string   "contract_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "lineitems", force: :cascade do |t|
@@ -48,18 +43,6 @@ ActiveRecord::Schema.define(version: 20160825150301) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "desc"
-  end
-
-  create_table "lineitmes", force: :cascade do |t|
-    t.string   "desc"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.string   "unit"
-    t.decimal  "total",      precision: 10, scale: 2
-    t.decimal  "unit_price", precision: 10, scale: 2
-    t.string   "invoice_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
   end
 
   create_table "rent_phases", force: :cascade do |t|
