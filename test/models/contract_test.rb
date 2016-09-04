@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class ContractTest < ActiveSupport::TestCase
-
+=begin
+  TODO: 判读报错异常，并抛出异常
+  TODO：测试用例
+  TODO：
+=end
   test "contract testing" do
     #根据付款周期生成合同
     phase_1 = RentPhase.new do |p|
@@ -45,7 +49,7 @@ class ContractTest < ActiveSupport::TestCase
     end
 
     #2. 测试generateInvoices
-    #print_generate_invoices_info
+    print_generate_invoices_info
     assert_not_nil contract.generate_invoices
     new_c = Contract.find_by_name('A Testing Contract')
     print_contract_info(new_c)
