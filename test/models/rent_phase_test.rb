@@ -17,26 +17,26 @@ class RentPhaseTest < ActiveSupport::TestCase
     end
 
     #正常测试
-    assert phase_1.get_bill_list.length ==  6
+    assert phase_1.get_bill_info_list.length ==  6
 
     phase_1.cycle = 2
-    assert phase_1.get_bill_list.length ==  3
+    assert phase_1.get_bill_info_list.length ==  3
 
     phase_1.cycle = 3
-    assert phase_1.get_bill_list.length ==  2
+    assert phase_1.get_bill_info_list.length ==  2
 
 
     #边缘测试
     phase_1.end_date = "2016-07-25"
 
     phase_1.cycle = 1
-    assert phase_1.get_bill_list.length ==  7
+    assert phase_1.get_bill_info_list.length ==  7
 
     phase_1.cycle = 2
-    assert phase_1.get_bill_list.length ==  4
+    assert phase_1.get_bill_info_list.length ==  4
 
     phase_1.cycle = 3
-    assert phase_1.get_bill_list.length ==  3
+    assert phase_1.get_bill_info_list.length ==  3
 
   end
 

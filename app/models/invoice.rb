@@ -4,6 +4,20 @@ class Invoice < ApplicationRecord
   belongs_to :contract
   has_many :lineitems
 
+  def refresh_with_bill_info(bill_info)
+    self.start_date = [self.start_date, bill_info[:start_date]].min
+    self.end_date = [self.end_date,bill_info[:end_date]].max
+    self.generate_lineitemes(bill_info[:monthly_price])
+  end
+
+  def create_with_bill_info(bill_info)
+    self.title = "合同#{self.contract.name}的#{bill_info[:due_date].to_s}账单"
+    self.due_date = bill_info[:due_date]
+    self.start_date = bill_info[:start_date]
+    self.end_date = bill_info[:end_date]
+    self.generate_lineitemes(bill_info[:monthly_price])
+  end
+
   def generate_lineitemes(monthly_price)
     #invoice的id和起止时间不能为空
     #TODO：改成异常
@@ -19,8 +33,8 @@ class Invoice < ApplicationRecord
     end
     # 更新Invoice的总金额
     # TODO: change to callback
-    self.total = Lineitem.where(invoice_id: self.id).sum(:total)
-    self.save
+    self.total = self.lineitems.map{|i| i.total}.inject(:+)
+    self.save!
   end
 
 end
