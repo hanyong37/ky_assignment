@@ -17,11 +17,10 @@ class ContractTest < ActiveSupport::TestCase
     print_generate_invoices_info
     contract = Contract.generate_contract("Another Testing Contract",@phase_list)
 
-    byebug
     assert_not_nil invs = contract.generate_invoices
     assert invs.size == 3
     assert invs.map{|i| i.due_date}.uniq.size == 3
-    #assert invs.map{|i| i.lineitems.size}.sum == 8
+    assert invs.map{|i| i.lineitems.size}.sum == 8
 
     print_contract_detail_info(contract)
   end

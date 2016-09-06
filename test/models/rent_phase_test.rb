@@ -39,8 +39,6 @@ class RentPhaseTest < ActiveSupport::TestCase
     assert_nil @phase_1.get_bill_info_list
   end
 
-
-
   private
 
   def init_data
@@ -52,6 +50,6 @@ class RentPhaseTest < ActiveSupport::TestCase
       p.monthly_price = 900
       p.contract = Contract.new
     end
-
   end
+
 end

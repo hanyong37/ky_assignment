@@ -2,13 +2,6 @@ require 'test_helper'
 
 class InvoiceTest < ActiveSupport::TestCase
 
-  def init_data
-    @old_inv = invoices(:fix_invoice)
-    @new_inv = Invoice.new( contract: contracts(:fix_contract))
-    @bill_info = {due_date: Date.new(2016,2,15), start_date: Date.new(2016,3,1), end_date: Date.new(2016,3,31), monthly_price: 1000}
-  end
-  private :init_data
-
   test "update with bill info" do
     init_data
     assert @old_inv.lineitems.size == 2
@@ -34,5 +27,11 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_raises (Exception) { @new_inv.init_with_bill_info(@bill_info)}
   end
 
+  private
+  def init_data
+    @old_inv = invoices(:fix_invoice)
+    @new_inv = Invoice.new( contract: contracts(:fix_contract))
+    @bill_info = {due_date: Date.new(2016,2,15), start_date: Date.new(2016,3,1), end_date: Date.new(2016,3,31), monthly_price: 1000}
+  end
 
 end

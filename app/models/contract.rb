@@ -2,7 +2,7 @@ class Contract < ApplicationRecord
   validates :start_date, :end_date, presence: true
 
   has_many :rent_phases
-  #validates_associated :rent_phases this will cause rp's valid? to check contract_id
+  validates_associated :rent_phases
 
   has_many :invoices
 
@@ -25,7 +25,7 @@ class Contract < ApplicationRecord
         end
       end
     end
-    self.reload.invoices
+    return self.reload.invoices
   end
 
 end

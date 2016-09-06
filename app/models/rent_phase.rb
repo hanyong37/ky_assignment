@@ -15,17 +15,14 @@ class RentPhase < ApplicationRecord
 ]
 =end
   def get_bill_info_list
-    return nil if self.invalid? #
-
+    return nil if self.invalid?
     bill_list = []
     loop_date = self.start_date
     until loop_date > self.end_date do
-      bill_list << {
-        due_date: get_due_date(loop_date),
-        start_date: loop_date,
-        end_date: last_day_of_cycle(loop_date) < self.end_date ? last_day_of_cycle(loop_date) : self.end_date,
-        monthly_price: self.monthly_price
-      }
+      bill_list << {due_date: get_due_date(loop_date),
+                    start_date: loop_date,
+                    end_date: last_day_of_cycle(loop_date) < self.end_date ? last_day_of_cycle(loop_date) : self.end_date,
+                    monthly_price: self.monthly_price}
       loop_date += self.cycle.months
     end
     bill_list
