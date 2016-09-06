@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+fix_item_one:
   start_date: 2016-08-25
   end_date: 2016-08-25
-  unit: MyString
-  total: 9.99
+  unit: 月
+  total:  450
   unit_price: 9.99
-  invoice_id: MyString
+  invoice: fix_invoice
 
-two:
+fix_item_two:
   start_date: 2016-08-25
   end_date: 2016-08-25
-  unit: MyString
-  total: 9.99
+  unit: 天
+  total: 450
   unit_price: 9.99
-  invoice_id: MyString
+  invoice: fix_invoice
